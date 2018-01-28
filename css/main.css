@@ -1,0 +1,159 @@
+@font-face {
+	font-family: 'Agency FB';
+	src: url('../font/agency-fb.ttf'); 
+}
+
+html {
+    color: white;
+    font-size: 1em;
+    line-height: 1.4;
+	font-family: 'Agency FB', arial;
+}
+
+body {
+	background-color: black;
+}
+
+header {
+	padding-top: 20px;
+}
+
+header h1 {
+	font-size: 4em;
+	font-weight: 900;
+	margin: 0;
+	line-height: 60px;
+}
+
+header h2 {
+	margin: 0;
+}
+
+header h3 {
+	margin: 0;
+}
+
+#main {
+    width: 100%;
+    text-align: center;
+}
+
+.main-content-container {
+	max-width: 100%;
+	width: 700px;
+    margin: auto;
+	margin-top: 10px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.content-box {
+	margin: 40px 0;
+	width: 100%;
+	display: flex;
+	background-color: #ffbaba;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.content-box:first-child {
+	margin-top: 0;
+}
+
+.content-box:last-child {
+	margin-bottom: 0;
+}
+
+.content-box div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	align-items: center;
+}
+
+.content-box img {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.content-box a:focus {
+	outline: none;
+}
+
+/* Trim */
+.content-box a {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+}
+
+.content-box a:before {
+  content: '';
+  position: absolute;
+  border: white solid 4px;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 9px;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.content-box a:hover:before, .content-box a:focus:before, .content-box a:active:before {
+  opacity: 1;
+}
+
+.mfp-image-holder .mfp-content {
+	max-width: 80% !important;
+}
+
+.mfp-no-margins img.mfp-img {
+	max-height: 80vh !important;
+}
+
+.mfp-figure:after {
+	background-color: rgba(0,0,0,0);
+}
+
+.mfp-no-margins img.mfp-img {
+	padding: 0;
+}
+
+.mfp-no-margins .mfp-figure:after {
+	top: 0;
+	bottom: 0;
+}
+
+.mfp-no-margins .mfp-container {
+	padding: 0;
+}
+
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: all 0.3s ease-out; 
+	-moz-transition: all 0.3s ease-out; 
+	-o-transition: all 0.3s ease-out; 
+	transition: all 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+	opacity: 1;
+}
+
+.mfp-with-zoom.mfp-ready.mfp-bg {
+	opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container, 
+.mfp-with-zoom.mfp-removing.mfp-bg {
+	opacity: 0;
+}
