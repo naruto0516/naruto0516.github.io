@@ -7,6 +7,7 @@ table of contents](TOC.md)
 * [.editorconfig](#editorconfig)
 * [Server Configuration](#server-configuration)
 * [robots.txt](#robotstxt)
+* [humans.txt](#humanstxt)
 * [browserconfig.xml](#browserconfigxml)
 
 --
@@ -41,21 +42,21 @@ your team define and maintain consistent coding styles between different
 editors and IDEs.
 
 By default, `.editorconfig` includes some basic
-[properties](http://editorconfig.org/#supported-properties) that reflect the
+[properties](https://editorconfig.org/#supported-properties) that reflect the
 coding styles from the files provided by default, but you can easily change
 them to better suit your needs.
 
 In order for your editor/IDE to apply the
-[properties](http://editorconfig.org/#supported-properties) from the
+[properties](https://editorconfig.org/#supported-properties) from the
 `.editorconfig` file, you may need to [install a
-plugin]( http://editorconfig.org/#download).
+plugin]( https://editorconfig.org/#download).
 
 __N.B.__ If you aren't using the server configurations provided by HTML5
 Boilerplate, we highly encourage you to configure your server to block
 access to `.editorconfig` files, as they can disclose sensitive information!
 
 For more details, please refer to the [EditorConfig
-project](http://editorconfig.org/).
+project](https://editorconfig.org/).
 
 
 ## Server Configuration
@@ -139,6 +140,20 @@ For more information about `robots.txt`, please see:
   * [robotstxt.org](http://www.robotstxt.org/)
   * [How Google handles the `robots.txt` file](https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt)
 
+## humans.txt
+
+The `humans.txt` file is used to provide information about people involved with
+the website.
+
+The provided file contains three sections:
+
+  * `TEAM` - this is intended to list the group of people responsible for the website
+  * `THANKS` - this is intended to list the group of people that have contributed
+  to the website
+  * `TECHNOLOGY COLOPHON` - the section lists technologies used to make the website
+  
+For more information about `humans.txt`, please see: http://humanstxt.org/
+
 
 ## browserconfig.xml
 
@@ -155,4 +170,4 @@ By default, the file points to 2 placeholder tile images:
 Notice that IE11 uses the same images when adding a site to the `favorites`.
 
 For more in-depth information about the `browserconfig.xml` file, please
-see [MSDN](https://msdn.microsoft.com/library/dn320426.aspx).
+see [MSDN](https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/dn320426(v=vs.85)).

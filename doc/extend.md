@@ -18,16 +18,14 @@ not everything fits with everyone's needs.
 * [Social Networks](#social-networks)
 * [URLs](#urls)
 * [Web Apps](#web-apps)
-
+* [security.txt](#security.txt)
 
 ## App Stores
 
 ### Smart App Banners in iOS 6+ Safari
 
 Stop bothering everyone with gross modals advertising your entry in the
-App Store. Include the following [meta tag](https://developer.apple.com/library/IOS/documentation/AppleApplications/Reference/SafariWebContent/PromotingAppswithAppBanners/PromotingAppswithAppBanners.html#//apple_ref/doc/uid/TP40002051-CH6-SW2)
-will unintrusively allow the user the option to download your iOS app,
-or open it with some data about the user's current state on the website.
+App Store. Including the following [meta tag](https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/PromotingAppswithAppBanners/PromotingAppswithAppBanners.html) will unobtrusively give the user the option to download your iOS app, or open it with some data about the user's current state on the website.
 
 ```html
 <meta name="apple-itunes-app" content="app-id=APP_ID,app-argument=SOME_TEXT">
@@ -108,10 +106,9 @@ Microsoft Ajax Content Delivery Network:
 
 ### Further reading about DNS prefetching
 
-* https://developer.mozilla.org/en-US/docs/Controlling_DNS_prefetching
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
 * https://dev.chromium.org/developers/design-documents/dns-prefetching
 * https://blogs.msdn.microsoft.com/ie/2011/03/17/internet-explorer-9-network-performance-improvements/
-* http://dayofjs.com/videos/22158462/web-browsers_alex-russel
 
 
 ## Google Universal Analytics
@@ -127,7 +124,7 @@ ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');
 ```
 
 To customize further, see Google's [Advanced
-Setup](https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced),
+Setup](https://developers.google.com/analytics/devguides/collection/analyticsjs/),
 [Pageview](https://developers.google.com/analytics/devguides/collection/analyticsjs/pages),
 and [Event](https://developers.google.com/analytics/devguides/collection/analyticsjs/events) Docs.
 
@@ -217,34 +214,12 @@ $(function(){
 
 ## Internet Explorer
 
-### Prompt users to switch to "Desktop Mode" in IE10 Metro
+### IE Pinned Sites
 
-IE10 does not support plugins, such as Flash, in Metro mode. If
-your site requires plugins, you can let users know that via the
-`x-ua-compatible` meta element, which will prompt them to switch
-to Desktop Mode.
-
-```html
-<meta http-equiv="x-ua-compatible" content="requiresActiveX=true">
-```
-
-Here's what it looks like alongside H5BP's default `x-ua-compatible`
-values:
-
-```html
-<meta http-equiv="x-ua-compatible" content="ie=edge,requiresActiveX=true">
-```
-
-You can find more information in [Microsoft's IEBlog post about prompting for
-plugin use in IE10 Metro
-Mode](https://blogs.msdn.microsoft.com/ie/2012/01/31/web-sites-and-a-plug-in-free-web/).
-
-### IE Pinned Sites (IE9+)
-
-Enabling your application for pinning will allow IE9 users to add it to their
+Enabling your application for pinning will allow IE users to add it to their
 Windows Taskbar and Start Menu. This comes with a range of new tools that you
-can easily configure with the elements below. See more [documentation on IE9
-Pinned Sites](https://msdn.microsoft.com/en-us/library/gg131029.aspx).
+can easily configure with the elements below. See more [documentation on IE 
+Pinned Sites](https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/samples/gg491731(v%3dvs.85)).
 
 ### Name the Pinned Site for Windows
 
@@ -277,7 +252,7 @@ track the number of pinned users, like so:
 
 ### Recolor IE's controls manually for a Pinned Site
 
-IE9+ will automatically use the overall color of your Pinned Site's favicon to
+IE will automatically use the overall color of your Pinned Site's favicon to
 shade its browser buttons. UNLESS you give it another color here. Only use
 named colors (`red`) or hex colors (`#ff0000`).
 
@@ -322,13 +297,13 @@ blog](https://blogs.msdn.microsoft.com/ie/2012/06/08/high-quality-visuals-for-pi
 
 ### (Windows 8) Badges for Pinned Sites
 
-IE10 will poll an XML document for badge information to display on your app's
+IE will poll an XML document for badge information to display on your app's
 tile in the Start screen. The user will be able to receive these badge updates
 even when your app isn't actively running. The badge's value can be a number,
 or one of a predefined list of glyphs.
 
 * [Tutorial on IEBlog with link to badge XML schema](https://blogs.msdn.microsoft.com/ie/2012/04/03/pinned-sites-in-windows-8/)
-* [Available badge values](https://msdn.microsoft.com/en-us/library/ie/br212849.aspx)
+* [Available badge values](https://docs.microsoft.com/en-us/uwp/schemas/tiles/badgeschema/element-badge)
 
 ```html
 <meta name="msapplication-badge" value="frequency=NUMBER_IN_MINUTES;polling-uri=https://www.example.com/path/to/file.xml">
@@ -398,18 +373,18 @@ plugin](https://www.google.com/search?ie=UTF-8&q=how+to+make+browser+search+plug
   [visibility](https://webmasters.googleblog.com/2009/05/introducing-rich-snippets.html).
 
 * If you're building a web app you may want [native style momentum scrolling in
-  iOS 5+](http://www.johanbrook.com/articles/native-style-momentum-scrolling-to-arrive-in-ios-5/)
+  iOS 5+](https://www.johanbrook.com/writings/native-style-momentum-scrolling-to-arrive-in-ios-5/)
   using `-webkit-overflow-scrolling: touch`.
 
 * If you want to disable the translation prompt in Chrome or block Google
   Translate from translating your web page, use [`<meta name="google"
-  value="notranslate">`](https://support.google.com/translate/?hl=en#2641276).
+  content="notranslate">`](https://support.google.com/webmasters/answer/79812).
   To disable translation for a particular section of the web page, add
   [`class="notranslate"`](https://support.google.com/translate/?hl=en#2641276).
 
 * If you want to disable the automatic detection and formatting of possible
   phone numbers in Safari on iOS, use [`<meta name="format-detection"
-  content="telephone=no">`](https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html/#//apple_ref/doc/uid/TP40008193-SW5).
+  content="telephone=no">`](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html).
 
 * Avoid development/stage websites "leaking" into SERPs (search engine results
   page) by [implementing X-Robots-tag
@@ -431,7 +406,7 @@ scratch](http://www.rssboard.org/rss-specification)?
 
 Atom is similar to RSS, and you might prefer to use it instead of or in
 addition to it. [See what Atom's all
-about](http://www.atomenabled.org/developers/syndication/).
+about](https://en.wikipedia.org/wiki/Atom_(Web_standard)).
 
 ```html
 <link rel="alternate" type="application/atom+xml" title="Atom" href="/atom.xml">
@@ -447,7 +422,7 @@ attribute should contain the location of your pingback service.
 ```
 
 * High-level explanation: https://codex.wordpress.org/Introduction_to_Blogging#Pingbacks
-* Step-by-step example case: http://www.hixie.ch/specs/pingback/pingback-1.0#TOC5
+* Step-by-step example case: https://www.hixie.ch/specs/pingback/pingback-1.0#TOC5
 * PHP pingback service: https://web.archive.org/web/20131211032834/http://blog.perplexedlabs.com/2009/07/15/xmlrpc-pingbacks-using-php/
 
 
@@ -460,10 +435,10 @@ You can control the information that Facebook and others display when users
 share your site. Below are just the most basic data points you might need. For
 specific content types (including "website"), see [Facebook's built-in Open
 Graph content
-templates](https://developers.facebook.com/docs/opengraph/objects/builtin/).
+templates](https://developers.facebook.com/docs/sharing/opengraph/using-objects).
 Take full advantage of Facebook's support for complex data and activity by
 following the [Open Graph
-tutorial](https://developers.facebook.com/docs/opengraph/tutorial/).
+tutorial](https://developers.facebook.com/docs/sharing/webmasters/getting-started).
 
 For a reference of Open Graph's markup and properties, you may check
 [Facebook's Open Graph Protocol reference](http://ogp.me/). Finally,
@@ -485,12 +460,10 @@ registration to Facebook).
 ### Twitter Cards
 
 Twitter provides a snippet specification that serves a similar purpose to Open
-Graph. In fact, Twitter will use Open Graph when Cards is not available. Note
-that, as of this writing, Twitter requires that app developers activate Cards
-on a per-domain basis. You can read more about the various snippet formats
-and application process in the [official Twitter Cards
-documentation](https://dev.twitter.com/docs/cards), and you can validate
-your markup with the [Card validator](https://cards-dev.twitter.com/validator)
+Graph. In fact, Twitter will use Open Graph when Cards is not available. You 
+can read more about the various snippet formats and application process in the 
+[official Twitter Cards documentation](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards), 
+and you can validate your markup with the [Card validator](https://cards-dev.twitter.com/validator)
 (needs registration to Twitter).
 
 ```html
@@ -512,7 +485,7 @@ of [schema.org's microdata vocabulary](https://schema.org/), which
 covers many other schemas that can describe the content of your pages
 to search engines. For this reason, this metadata is more generic for
 SEO, notably for Google's search-engine, although this vocabulary is
-also used by Microsoft, Pinterest or Yandex.
+also used by Microsoft, Pinterest and Yandex.
 
 You can validate your markup with the [Structured Data Testing
 Tool](https://developers.google.com/structured-data/testing-tool/).
@@ -543,16 +516,6 @@ the cleaner, more accurate `https://www.example.com/cart.html`.
 <link rel="canonical" href="">
 ```
 
-### Official shortlink
-
-Signal to the world "This is the shortened URL to use this page!" Poorly
-supported at this time. Learn more by reading the [article about shortlinks on
-the Microformats wiki](http://microformats.org/wiki/rel-shortlink).
-
-```html
-<link rel="shortlink" href="h5bp.com">
-```
-
 ### Separate mobile URLs
 
 If you use separate URLs for desktop and mobile users, you should consider
@@ -573,8 +536,7 @@ This can be done by adding the following annotations in your HTML pages:
 
 For more information please see:
 
-* https://developers.google.com/webmasters/smartphone-sites/details#separateurls
-* https://developers.google.com/webmasters/smartphone-sites/feature-phones
+* https://developers.google.com/search/mobile-sites/mobile-seo/separate-urls
 
 
 ## Web Apps
@@ -605,38 +567,16 @@ on Apple's site.
 
 ### Apple Touch Icons
 
-The Apple touch icons can be seen as the favicons of iOS devices.
+Apple touch icons are used as icons when a user adds your webapp to the home 
+screen of aniOS devices.
 
-The main sizes of the Apple touch icons are:
-
-* `57×57px` – iPhone with @1x display and iPod Touch
-* `72×72px` – iPad and iPad mini with @1x display running iOS ≤ 6
-* `76×76px` – iPad and iPad mini with @1x display running iOS ≥ 7
-* `114×114px` – iPhone with @2x display running iOS ≤ 6
-* `120×120px` – iPhone with @2x and @3x display running iOS ≥ 7
-* `144×144px` – iPad and iPad mini with @2x display running iOS ≤ 6
-* `152×152px` – iPad and iPad mini with @2x display running iOS 7
-* `180×180px` – iPad and iPad mini with @2x display running iOS 8
-
-Displays meaning:
-
-* @1x - non-Retina
-* @2x - Retina
-* @3x - Retina HD
-
-More information about the displays of iOS devices can be found
-[here](https://en.wikipedia.org/wiki/List_of_iOS_devices#Display).
-
-In most cases, one `180×180px` touch icon named `icon.png`
-and including:
+Though the dimensions of the icon can vary between iOS devices and versions 
+one `180×180px` touch icon named `icon.png` and including the following in 
+the `<head>` of the page is enough:
 
 ```html
 <link rel="apple-touch-icon" href="icon.png">
 ```
-
-in the `<head>` of the page is enough. If you use art-direction and/or
-want to have different content for each device, you can add more touch
-icons as written above.
 
 For a more comprehensive overview, please refer to Mathias' [article on Touch
 Icons](https://mathiasbynens.be/notes/touch-icons).
@@ -646,18 +586,13 @@ Icons](https://mathiasbynens.be/notes/touch-icons).
 
 Apart from that it is possible to add start-up screens for web apps on iOS. This
 basically works by defining `apple-touch-startup-image` with an according link
-to the image. Since iOS devices have different screen resolutions it is
+to the image. Since iOS devices have different screen resolutions it maybe
 necessary to add media queries to detect which image to load. Here is an
-example for a retina iPhone:
+example for an iPhone:
 
 ```html
-<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="img/startup-retina.png">
+<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="img/startup.png">
 ```
-
-However, it is possible to detect which start-up image to use with JavaScript.
-The Mobile Boilerplate provides a useful function for this. Please see
-[helpers.js](https://github.com/h5bp/mobile-boilerplate/blob/v4.1.0/js/helper.js#L336-L383)
-for the implementation.
 
 
 ### Chrome Mobile web apps
@@ -691,3 +626,15 @@ The `content` attribute extension can take any valid CSS color.
 
 Currently, the `theme-color` meta extension is supported by [Chrome 39+
 for Android Lollipop](https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android).
+
+
+## security.txt
+
+When security risks in web services are discovered by users they often lack the
+channels to disclose them properly. As a result, security issues may be left unreported. 
+
+Security.txt defines a standard to help organizations define the process for 
+users to disclose security vulnerabilities securely. Include a text
+file on your server at `.well-known/security.txt` with the relevant contact details.
+
+Check [https://securitytxt.org/](https://securitytxt.org/) for more details.
