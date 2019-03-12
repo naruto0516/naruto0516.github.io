@@ -3,6 +3,18 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Bryan Lee Portfolio</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="manifest" href="site.webmanifest" />
+		<link rel="apple-touch-icon" href="icon.png" />
+		<link rel="shortcut icon" type="image/png" href="icon.png" />
+
+		<link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/main.css" />
+
+		<meta name="theme-color" content="#fafafa" />
+
 		<style type="text/css" media="screen">
 			@import url('https://fonts.googleapis.com/css?family=Oxygen');
 			h2 {
@@ -30,28 +42,7 @@
 			.video iframe {
 				position: absolute;
 			}
-			.iframe-item {
-				position: relative;
-				padding-bottom: 56%;
-			}
-			.iframe-item iframe {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				left: 0;
-				top: 0;
-			}
 		</style>
-		<meta name="description" content="" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-		<link rel="manifest" href="site.webmanifest" />
-		<link rel="apple-touch-icon" href="icon.png" />
-
-		<link rel="stylesheet" href="css/normalize.css" />
-		<link rel="stylesheet" href="css/main.css" />
-
-		<meta name="theme-color" content="#fafafa" />
 	</head>
 
 	<body>
@@ -61,14 +52,23 @@
 			</div>
 		</div>
 
-		<div class="iframe-item">
-			<iframe
-				src="https://player.vimeo.com/video/322573683"
-				frameborder="0"
-				webkitallowfullscreen
-				mozallowfullscreen
-				allowfullscreen
-			></iframe>
+		<div class="item-container">
+			<div class="item-wrapper">
+				<h2 class="item-text" style="color: #5465f0;">
+					A N I M A T I O N&nbsp;&nbsp;R E E L
+				</h2>
+				<div class="video">
+					<img src="img/02.jpg" alt="" class="item-image" />
+					<iframe
+						style="top:0;left:0;width:100%;height:100%;"
+						src="https://player.vimeo.com/video/322573683"
+						frameborder="0"
+						webkitallowfullscreen
+						mozallowfullscreen
+						allowfullscreen
+					></iframe>
+				</div>
+			</div>
 		</div>
 
 		<div class="item-container">
@@ -113,14 +113,18 @@
 			</div>
 		</div>
 
-		<div class="iframe-item">
-			<iframe
-				src="https://player.vimeo.com/video/322571979"
-				frameborder="0"
-				webkitallowfullscreen
-				mozallowfullscreen
-				allowfullscreen
-			></iframe>
+		<div class="item-container">
+			<div class="item-wrapper video">
+				<img src="img/09.jpg" alt="" class="item-image" />
+				<iframe
+					style="top:0;left:0;width:100%;height:100%;"
+					src="https://player.vimeo.com/video/322571979"
+					frameborder="0"
+					webkitallowfullscreen
+					mozallowfullscreen
+					allowfullscreen
+				></iframe>
+			</div>
 		</div>
 
 		<div class="item-container">
