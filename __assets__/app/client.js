@@ -3163,7 +3163,7 @@ var views = {
   "GOODBYE!": (($186 = $196 = 1, $168 = $227[$174]) || ($186 = $196 = 0, $168 = $227[$174] = $168 = createComponent("goodbye", null, null, null)), $186 || ($168[$67] = $227._), $186 || $227.sym || !$168.setup || $168.setup($196), $227.sym || $168[$76]($196), $168)
 };
 var quotes = {
-  "YOU ARE HERE": "\u201CHello.\u201D -Bryan Lee",
+  "YOU ARE HERE": "\u201CHellooo.\u201D -Bryan Lee",
   ABOUT: "\u201CGood vibrations\u2026\u201D -Pegasus",
   PROJECTS: "\u201CGo big or go home.\u201D -Abraham Lincoln",
   ILLUSTRATIONS: "\u201CVariety is the spice of life.\u201D -Paulette Chandler",
