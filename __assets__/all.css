@@ -7,10 +7,10 @@ home-tag {
 }
 /* chunk:end */
 /* styles:app/components/about.imba */
-.cw-ag:not(#_):not(#_):not(#_) {
+.cv-ag:not(#_):not(#_):not(#_) {
   max-width: 300px;
 }
-.cw-an:not(#_):not(#_):not(#_) {
+.cv-an:not(#_):not(#_):not(#_) {
   width: 100%;
 }
 about-tag {
@@ -28,34 +28,11 @@ illustrations-tag {
 }
 /* chunk:end */
 /* styles:app/components/goodbye.imba */
-.cz-ag:not(#_):not(#_):not(#_) {
+.cu-ag:not(#_):not(#_):not(#_) {
   text-align: left;
   width: 100%;
 }
 goodbye-tag {
-  display: block;
-}
-/* chunk:end */
-/* styles:app/components/magnify.imba */
-.cu-af:not(#_):not(#_) {
-  cursor: zoom-in;
-}
-.ref--container.cu_af:not(#_) {
-  display: inline-block;
-  transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
-}
-.bg.cu_af:not(#_) {
-  transition: background 700ms;
-}
-.active.cu_af:not(#_) {
-  background: #34286f;
-  position: fixed;
-  top: 0rem;
-  left: 0rem;
-  bottom: 0rem;
-  right: 0rem;
-}
-magnify-tag {
   display: block;
 }
 /* chunk:end */

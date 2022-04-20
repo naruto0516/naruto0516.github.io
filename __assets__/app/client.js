@@ -60,7 +60,7 @@ var emit__ = function(event, args, node) {
   return;
 };
 function listen(obj, event, listener, path) {
-  var $228;
+  var $229;
   let cbs;
   let list;
   let tail;
@@ -477,8 +477,8 @@ var SVGAsset = class {
   adoptNode(node) {
     var _a;
     if ((_a = this.meta) == null ? void 0 : _a.content) {
-      for (let $89 = this.meta.attributes, $610 = 0, $710 = Object.keys($89), $97 = $710.length, k, v; $610 < $97; $610++) {
-        k = $710[$610];
+      for (let $89 = this.meta.attributes, $610 = 0, $711 = Object.keys($89), $97 = $711.length, k, v; $610 < $97; $610++) {
+        k = $711[$610];
         v = $89[k];
         node.setAttribute(k, v);
       }
@@ -496,7 +496,7 @@ var SVGAsset = class {
   }
 };
 function asset(data) {
-  var $1110, $129;
+  var $1111, $129;
   if (data[$102]) {
     return data[$102];
   }
@@ -1664,11 +1664,11 @@ var $154 = Symbol.for("#__hooks__");
 var $164 = Symbol.for("#autorender");
 var hydrator = new class {
   [$211]($$ = {}) {
-    var $710;
-    ($710 = $$.items) !== void 0 && (this.items = $710);
-    ($710 = $$.current) !== void 0 && (this.current = $710);
-    ($710 = $$.lastQueued) !== void 0 && (this.lastQueued = $710);
-    ($710 = $$.tests) !== void 0 && (this.tests = $710);
+    var $711;
+    ($711 = $$.items) !== void 0 && (this.items = $711);
+    ($711 = $$.current) !== void 0 && (this.current = $711);
+    ($711 = $$.lastQueued) !== void 0 && (this.lastQueued = $711);
+    ($711 = $$.tests) !== void 0 && (this.tests = $711);
   }
   constructor($$ = null) {
     this[$111]($$);
@@ -2006,9 +2006,215 @@ var Component = class extends HTMLElement {
   }
 };
 
+// node_modules/imba/src/imba/dom/styles.imba
+function extend$__3(target, ext) {
+  const descriptors = Object.getOwnPropertyDescriptors(ext);
+  delete descriptors.constructor;
+  Object.defineProperties(target, descriptors);
+  return target;
+}
+var $115 = Symbol.for("#__init__");
+var $214 = Symbol.for("#__patch__");
+var $66 = Symbol.for("#__initor__");
+var $76 = Symbol.for("#__inited__");
+var $39 = Symbol.for("#__hooks__");
+var VALID_CSS_UNITS = {
+  cm: 1,
+  mm: 1,
+  Q: 1,
+  pc: 1,
+  pt: 1,
+  px: 1,
+  em: 1,
+  ex: 1,
+  ch: 1,
+  rem: 1,
+  vw: 1,
+  vh: 1,
+  vmin: 1,
+  vmax: 1,
+  s: 1,
+  ms: 1,
+  fr: 1,
+  "%": 1,
+  in: 1,
+  turn: 1,
+  grad: 1,
+  rad: 1,
+  deg: 1,
+  Hz: 1,
+  kHz: 1
+};
+var CSS_STR_PROPS = {
+  prefix: 1,
+  suffix: 1,
+  content: 1
+};
+var CSS_COLORS = {
+  rose: [[356, 100, 97], [356, 100, 95], [353, 96, 90], [353, 96, 82], [351, 95, 71], [350, 89, 60], [347, 77, 50], [345, 83, 41], [343, 80, 35], [342, 75, 30]],
+  pink: [[327, 73, 97], [326, 78, 95], [326, 85, 90], [327, 87, 82], [329, 86, 70], [330, 81, 60], [333, 71, 51], [335, 78, 42], [336, 74, 35], [336, 69, 30]],
+  fuchsia: [[289, 100, 98], [287, 100, 95], [288, 96, 91], [291, 93, 83], [292, 91, 73], [292, 84, 61], [293, 69, 49], [295, 72, 40], [295, 70, 33], [297, 64, 28]],
+  purple: [[270, 100, 98], [269, 100, 95], [269, 100, 92], [269, 97, 85], [270, 95, 75], [271, 91, 65], [271, 81, 56], [272, 72, 47], [273, 67, 39], [274, 66, 32]],
+  violet: [[250, 100, 98], [251, 91, 95], [251, 95, 92], [252, 95, 85], [255, 92, 76], [258, 90, 66], [262, 83, 58], [263, 70, 50], [263, 69, 42], [264, 67, 35]],
+  indigo: [[226, 100, 97], [226, 100, 94], [228, 96, 89], [230, 94, 82], [234, 89, 74], [239, 84, 67], [243, 75, 59], [245, 58, 51], [244, 55, 41], [242, 47, 34]],
+  blue: [[214, 100, 97], [214, 95, 93], [213, 97, 87], [212, 96, 78], [213, 94, 68], [217, 91, 60], [221, 83, 53], [224, 76, 48], [226, 71, 40], [224, 64, 33]],
+  sky: [[204, 100, 97], [204, 94, 94], [201, 94, 86], [199, 95, 74], [198, 93, 60], [199, 89, 48], [200, 98, 39], [201, 96, 32], [201, 90, 27], [202, 80, 24]],
+  cyan: [[183, 100, 96], [185, 96, 90], [186, 94, 82], [187, 92, 69], [188, 86, 53], [189, 94, 43], [192, 91, 36], [193, 82, 31], [194, 70, 27], [196, 64, 24]],
+  teal: [[166, 76, 97], [167, 85, 89], [168, 84, 78], [171, 77, 64], [172, 66, 50], [173, 80, 40], [175, 84, 32], [175, 77, 26], [176, 69, 22], [176, 61, 19]],
+  emerald: [[152, 81, 96], [149, 80, 90], [152, 76, 80], [156, 72, 67], [158, 64, 52], [160, 84, 39], [161, 94, 30], [163, 94, 24], [163, 88, 20], [164, 86, 16]],
+  green: [[138, 76, 97], [141, 84, 93], [141, 79, 85], [142, 77, 73], [142, 69, 58], [142, 71, 45], [142, 76, 36], [142, 72, 29], [143, 64, 24], [144, 61, 20]],
+  lime: [[78, 92, 95], [80, 89, 89], [81, 88, 80], [82, 85, 67], [83, 78, 55], [84, 81, 44], [85, 85, 35], [86, 78, 27], [86, 69, 23], [88, 61, 20]],
+  yellow: [[55, 92, 95], [55, 97, 88], [53, 98, 77], [50, 98, 64], [48, 96, 53], [45, 93, 47], [41, 96, 40], [35, 92, 33], [32, 81, 29], [28, 73, 26]],
+  amber: [[48, 100, 96], [48, 96, 89], [48, 97, 77], [46, 97, 65], [43, 96, 56], [38, 92, 50], [32, 95, 44], [26, 90, 37], [23, 83, 31], [22, 78, 26]],
+  orange: [[33, 100, 96], [34, 100, 92], [32, 98, 83], [31, 97, 72], [27, 96, 61], [25, 95, 53], [21, 90, 48], [17, 88, 40], [15, 79, 34], [15, 75, 28]],
+  red: [[0, 86, 97], [0, 93, 94], [0, 96, 89], [0, 94, 82], [0, 91, 71], [0, 84, 60], [0, 72, 51], [0, 74, 42], [0, 70, 35], [0, 63, 31]],
+  warmer: [[60, 9, 98], [60, 5, 96], [20, 6, 90], [24, 6, 83], [24, 5, 64], [25, 5, 45], [33, 5, 32], [30, 6, 25], [12, 6, 15], [24, 10, 10]],
+  warm: [[0, 0, 98], [0, 0, 96], [0, 0, 90], [0, 0, 83], [0, 0, 64], [0, 0, 45], [0, 0, 32], [0, 0, 25], [0, 0, 15], [0, 0, 9]],
+  gray: [[0, 0, 98], [240, 5, 96], [240, 6, 90], [240, 5, 84], [240, 5, 65], [240, 4, 46], [240, 5, 34], [240, 5, 26], [240, 4, 16], [240, 6, 10]],
+  cool: [[210, 20, 98], [220, 14, 96], [220, 13, 91], [216, 12, 84], [218, 11, 65], [220, 9, 46], [215, 14, 34], [217, 19, 27], [215, 28, 17], [221, 39, 11]],
+  cooler: [[210, 40, 98], [210, 40, 96], [214, 32, 91], [213, 27, 84], [215, 20, 65], [215, 16, 47], [215, 19, 35], [215, 25, 27], [217, 33, 17], [222, 47, 11]]
+};
+var CSS_COLORS_REGEX = new RegExp("^(" + Object.keys(CSS_COLORS).join("|") + ")(\\d+(?:\\.\\d+)?)$");
+var CSS_PX_PROPS = /^([xyz])$/;
+var CSS_DIM_PROPS = /^([tlbr]|size|[whtlbr]|[mps][tlbrxy]?|[rcxy]?[gs])$/;
+var resets = "*,::before,::after {\nbox-sizing: border-box;\nborder-width: 0;\nborder-style: solid;\nborder-color: currentColor;\n}";
+var Styles = class {
+  [$214]($$ = {}) {
+    var $411;
+    ($411 = $$.entries) !== void 0 && (this.entries = $411);
+  }
+  constructor($$ = null) {
+    this[$115]($$);
+  }
+  [$115]($$ = null) {
+    var $514;
+    this.entries = $$ && ($514 = $$.entries) !== void 0 ? $514 : {};
+  }
+  register(id, styles2) {
+    let entry = this.entries[id];
+    if (!entry) {
+      entry = this.entries[id] = {sourceId: id, css: styles2};
+      if (!this.entries.resets) {
+        this.register("resets", resets);
+      }
+      ;
+      entry.node = globalThis.document.createElement("style");
+      entry.node.setAttribute("data-id", id);
+      entry.node.textContent = entry.css;
+      globalThis.document.head.appendChild(entry.node);
+      ;
+    } else if (entry) {
+      entry.css = styles2;
+      if (entry.node) {
+        entry.node.textContent = styles2;
+      }
+      ;
+    }
+    ;
+    return;
+  }
+  toString() {
+    return Object.values(this.entries).map(function(_0) {
+      return _0.css;
+    }).join("\n\n");
+  }
+  toValue(value, unit, key, param = null) {
+    let colormatch;
+    if (CSS_STR_PROPS[key]) {
+      value = String(value);
+    }
+    ;
+    let typ = typeof value;
+    if (typ == "number") {
+      if (!unit) {
+        if (CSS_PX_PROPS.test(key)) {
+          unit = "px";
+        } else if (CSS_DIM_PROPS.test(key)) {
+          unit = "u";
+        } else if (key == "rotate") {
+          unit = "turn";
+          value = (value % 1).toFixed(4);
+        }
+        ;
+      }
+      ;
+      if (unit) {
+        if (VALID_CSS_UNITS[unit]) {
+          return value + unit;
+        } else if (unit == "u") {
+          return value * 4 + "px";
+        } else {
+          return "calc(var(--u_" + unit + ",1px) * " + value + ")";
+        }
+        ;
+      } else {
+        true;
+      }
+      ;
+    } else if (typ == "string") {
+      if (key && CSS_STR_PROPS[key] && value[0] != '"' && value[0] != "'") {
+        if (value.indexOf('"') >= 0) {
+          if (value.indexOf("'") == -1) {
+            value = "'" + value + "'";
+          } else {
+            false;
+          }
+          ;
+        } else {
+          value = '"' + value + '"';
+        }
+        ;
+      }
+      ;
+      if (colormatch = value.match(CSS_COLORS_REGEX)) {
+        let color = CSS_COLORS[colormatch[1]];
+        let level = color[parseInt(colormatch[2])];
+        let a = "100%";
+        if (typeof param == "number") {
+          a = param + "%";
+        } else if (typeof param == "string") {
+          a = param;
+        }
+        ;
+        if (level) {
+          return "hsla(" + level[0] + "," + level[1] + "%," + level[2] + "%," + a + ")";
+        }
+        ;
+      }
+      ;
+    } else if (value && value.toStyleString instanceof Function) {
+      return value.toStyleString();
+    }
+    ;
+    return value;
+  }
+  parseDimension(val) {
+    if (typeof val == "string") {
+      let [m, num, unit] = val.match(/^([-+]?[\d\.]+)(%|\w+)$/);
+      return [parseFloat(num), unit];
+    } else if (typeof val == "number") {
+      return [val];
+    }
+    ;
+  }
+};
+var styles = new Styles();
+var colors = Object.keys(CSS_COLORS);
+var Extend$Element$af = class {
+  css$(key, value, mods) {
+    return this.style[key] = value;
+  }
+  css$var(name, value, unit, key, param = null) {
+    let cssval = styles.toValue(value, unit, key, param);
+    this.style.setProperty(name, cssval);
+    return;
+  }
+};
+extend$__3(Element.prototype, Extend$Element$af.prototype);
+
 // node_modules/imba/src/imba/dom/mount.imba
-var $115 = Symbol.for("#insertInto");
-var $214 = Symbol.for("#removeFrom");
+var $116 = Symbol.for("#insertInto");
+var $215 = Symbol.for("#removeFrom");
 function mount(mountable, into) {
   if (false) {
   }
@@ -2033,12 +2239,12 @@ function mount(mountable, into) {
     element.__F |= 64;
   }
   ;
-  element[$115](parent);
+  element[$116](parent);
   return element;
 }
 function unmount(el) {
-  if (el && el[$214]) {
-    el[$214](el.parentNode);
+  if (el && el[$215]) {
+    el[$215](el.parentNode);
   }
   ;
   return el;
@@ -2048,7 +2254,7 @@ instance3.mount = mount;
 instance3.unmount = unmount;
 
 // node_modules/imba/src/imba/events/keyboard.imba
-function extend$__3(target, ext) {
+function extend$__4(target, ext) {
   const descriptors = Object.getOwnPropertyDescriptors(ext);
   delete descriptors.constructor;
   Object.defineProperties(target, descriptors);
@@ -2094,10 +2300,10 @@ var Extend$KeyboardEvent$af = class {
     ;
   }
 };
-extend$__3(KeyboardEvent.prototype, Extend$KeyboardEvent$af.prototype);
+extend$__4(KeyboardEvent.prototype, Extend$KeyboardEvent$af.prototype);
 
 // node_modules/imba/src/imba/events/mouse.imba
-function extend$__4(target, ext) {
+function extend$__5(target, ext) {
   const descriptors = Object.getOwnPropertyDescriptors(ext);
   delete descriptors.constructor;
   Object.defineProperties(target, descriptors);
@@ -2133,10 +2339,10 @@ var Extend$MouseEvent$af = class {
     return /^(Mac|iPhone|iPad|iPod)/.test(nav || "") ? !!this.metaKey : !!this.ctrlKey;
   }
 };
-extend$__4(MouseEvent.prototype, Extend$MouseEvent$af.prototype);
+extend$__5(MouseEvent.prototype, Extend$MouseEvent$af.prototype);
 
 // node_modules/imba/src/imba/events/core.imba
-function extend$__5(target, ext) {
+function extend$__6(target, ext) {
   const descriptors = Object.getOwnPropertyDescriptors(ext);
   delete descriptors.constructor;
   Object.defineProperties(target, descriptors);
@@ -2146,14 +2352,14 @@ function iter$__5(a) {
   let v;
   return a ? (v = a.toIterable) ? v.call(a) : a : a;
 }
-var $116 = Symbol.for("#extendType");
-var $215 = Symbol.for("#modifierState");
-var $39 = Symbol.for("#sharedModifierState");
+var $117 = Symbol.for("#extendType");
+var $216 = Symbol.for("#modifierState");
+var $310 = Symbol.for("#sharedModifierState");
 var $49 = Symbol.for("#onceHandlerEnd");
 var $254 = Symbol.for("#__initor__");
 var $263 = Symbol.for("#__inited__");
 var $56 = Symbol.for("#__hooks__");
-var $66 = Symbol.for("#extendDescriptors");
+var $67 = Symbol.for("#extendDescriptors");
 var $94 = Symbol.for("#context");
 var $145 = Symbol.for("#self");
 var $155 = Symbol.for("#target");
@@ -2162,19 +2368,19 @@ var $234 = Symbol.for("#defaultPrevented");
 use_events_keyboard();
 use_events_mouse();
 var Extend$CustomEvent$af = class {
-  [$116](kls) {
-    var $89, desc, $710;
-    let ext = kls[$66] || (kls[$66] = (desc = Object.getOwnPropertyDescriptors(kls.prototype), $710 = desc.constructor, delete desc.constructor, $710, desc));
+  [$117](kls) {
+    var $89, desc, $711;
+    let ext = kls[$67] || (kls[$67] = (desc = Object.getOwnPropertyDescriptors(kls.prototype), $711 = desc.constructor, delete desc.constructor, $711, desc));
     return Object.defineProperties(this, ext);
   }
 };
-extend$__5(CustomEvent.prototype, Extend$CustomEvent$af.prototype);
+extend$__6(CustomEvent.prototype, Extend$CustomEvent$af.prototype);
 var Extend$Event$ag = class {
-  get [$215]() {
-    var $1110, $106;
-    return ($1110 = this[$94])[$106 = this[$94].step] || ($1110[$106] = {});
+  get [$216]() {
+    var $1111, $106;
+    return ($1111 = this[$94])[$106 = this[$94].step] || ($1111[$106] = {});
   }
-  get [$39]() {
+  get [$310]() {
     var $137, $129;
     return ($137 = this[$94].handler)[$129 = this[$94].step] || ($137[$129] = {});
   }
@@ -2206,7 +2412,7 @@ var Extend$Event$ag = class {
     return this.target == this[$94].element;
   }
   \u03B1cooldown(time = 250) {
-    let o = this[$39];
+    let o = this[$310];
     if (o.active) {
       return false;
     }
@@ -2223,7 +2429,7 @@ var Extend$Event$ag = class {
     return true;
   }
   \u03B1throttle(time = 250) {
-    let o = this[$39];
+    let o = this[$310];
     if (o.active) {
       if (o.next) {
         o.next(false);
@@ -2257,7 +2463,7 @@ var Extend$Event$ag = class {
     return true;
   }
   \u03B1debounce(time = 250) {
-    let o = this[$39];
+    let o = this[$310];
     let e = this;
     o.queue || (o.queue = []);
     o.queue.push(o.last = e);
@@ -2309,7 +2515,7 @@ var Extend$Event$ag = class {
     ;
   }
 };
-extend$__5(Event.prototype, Extend$Event$ag.prototype);
+extend$__6(Event.prototype, Extend$Event$ag.prototype);
 function use_events() {
   return true;
 }
@@ -2559,105 +2765,105 @@ var Extend$Element$ah2 = class {
     return handler;
   }
 };
-extend$__5(Element.prototype, Extend$Element$ah2.prototype);
+extend$__6(Element.prototype, Extend$Element$ah2.prototype);
 
 // app/components/home.imba
-var $216 = Symbol.for("#beforeReconcile");
+var $217 = Symbol.for("#beforeReconcile");
 var $50 = Symbol.for("#afterReconcile");
 var $57 = Symbol();
 var HomeComponent = class extends Component {
   render() {
-    var $120, $311, $411, $610 = this._ns_ || "", $710, $89, $97, $106, $1110, $129, $137, $147, $1510, $169, $175, $187, $197, $205, $2112, $228, $236, $246, $258, $265, $274, $284, $295, $304, $314, $325, $332, $343, $353, $363, $372, $382, $393, $40, $412, $423, $433, $444, $453, $464, $472, $482, $492;
+    var $120, $314, $411, $610 = this._ns_ || "", $711, $89, $97, $106, $1111, $129, $137, $147, $1510, $169, $175, $187, $197, $205, $2112, $229, $236, $246, $258, $265, $274, $284, $295, $304, $315, $325, $332, $343, $353, $363, $372, $382, $393, $40, $412, $423, $433, $444, $453, $464, $472, $482, $492;
     $120 = this;
-    $120[$216]();
-    ($311 = $411 = 1, $120[$57] === 1) || ($311 = $411 = 0, $120[$57] = 1);
-    (!$311 || $411 & 2) && $120.flagSelf$("left home");
-    $311 || ($710 = createElement("div", $120, `iframe-container ${$610}`, null));
-    $311 || ($89 = createElement("iframe", $710, `${$610}`, null));
-    $311 || ($89.src = "https://player.vimeo.com/video/334506441?color=ff9933");
-    $311 || ($89.allow = "fullscreen");
+    $120[$217]();
+    ($314 = $411 = 1, $120[$57] === 1) || ($314 = $411 = 0, $120[$57] = 1);
+    (!$314 || $411 & 2) && $120.flagSelf$("left home");
+    $314 || ($711 = createElement("div", $120, `iframe-container ${$610}`, null));
+    $314 || ($89 = createElement("iframe", $711, `${$610}`, null));
+    $314 || ($89.src = "https://player.vimeo.com/video/334506441?color=ff9933");
+    $314 || ($89.allow = "fullscreen");
     ;
     ;
-    $311 || ($97 = createElement("p", $120, `cy-ai ${$610}`, null));
-    $311 || ($106 = createElement("strong", $97, `${$610}`, "A businessman walks into the elevator for another day at work\u2026"));
+    $314 || ($97 = createElement("p", $120, `cy-ai ${$610}`, null));
+    $314 || ($106 = createElement("strong", $97, `${$610}`, "A businessman walks into the elevator for another day at work\u2026"));
     ;
     ;
-    $311 || ($1110 = createElement("ul", $120, `${$610}`, null));
-    $311 || ($129 = createElement("li", $1110, `${$610}`, "US Competition Winner//GLAS"));
+    $314 || ($1111 = createElement("ul", $120, `${$610}`, null));
+    $314 || ($129 = createElement("li", $1111, `${$610}`, "US Competition Winner//GLAS"));
     ;
-    $311 || ($137 = createElement("li", $1110, `${$610}`, "Best Sound//Fantoche"));
+    $314 || ($137 = createElement("li", $1111, `${$610}`, "Best Sound//Fantoche"));
     ;
-    $311 || ($147 = createElement("li", $1110, `${$610}`, "Best Student Film//Animation Chico"));
+    $314 || ($147 = createElement("li", $1111, `${$610}`, "Best Student Film//Animation Chico"));
     ;
-    $311 || ($1510 = createElement("li", $1110, `${$610}`, "Best Student Animation//Silk Road International Film Festival"));
+    $314 || ($1510 = createElement("li", $1111, `${$610}`, "Best Student Animation//Silk Road International Film Festival"));
     ;
-    $311 || ($169 = createElement("li", $1110, `${$610}`, "Winner Student Experimental Short//Los Angeles Animation Festival"));
+    $314 || ($169 = createElement("li", $1111, `${$610}`, "Winner Student Experimental Short//Los Angeles Animation Festival"));
     ;
-    $311 || ($175 = createElement("li", $1110, `${$610}`, "Finalist//Black Maria Film Festival"));
+    $314 || ($175 = createElement("li", $1111, `${$610}`, "Finalist//Black Maria Film Festival"));
     ;
     ;
-    $311 || ($187 = createElement("ul", $120, `${$610}`, null));
-    $311 || ($197 = createElement("li", $187, `${$610}`, "Kaboom Animation Festival//Amsterdam, Netherlands 2021"));
+    $314 || ($187 = createElement("ul", $120, `${$610}`, null));
+    $314 || ($197 = createElement("li", $187, `${$610}`, "Kaboom Animation Festival//Amsterdam, Netherlands 2021"));
     ;
-    $311 || ($205 = createElement("li", $187, `${$610}`, "Animatricks//Helsinki, Finland 2021"));
+    $314 || ($205 = createElement("li", $187, `${$610}`, "Animatricks//Helsinki, Finland 2021"));
     ;
-    $311 || ($2112 = createElement("li", $187, `${$610}`, "London International Animation Festival//London, England 2020"));
+    $314 || ($2112 = createElement("li", $187, `${$610}`, "London International Animation Festival//London, England 2020"));
     ;
-    $311 || ($228 = createElement("li", $187, `${$610}`, "GIRAF International Festival of Independent Animation//Calgary, Canada 2020"));
+    $314 || ($229 = createElement("li", $187, `${$610}`, "GIRAF International Festival of Independent Animation//Calgary, Canada 2020"));
     ;
-    $311 || ($236 = createElement("li", $187, `${$610}`, "Cardiff Animation Nights//Cardiff, Wales 2020"));
+    $314 || ($236 = createElement("li", $187, `${$610}`, "Cardiff Animation Nights//Cardiff, Wales 2020"));
     ;
-    $311 || ($246 = createElement("li", $187, `${$610}`, "San Diego Underground Film Festival//San Diego, CA 2020"));
+    $314 || ($246 = createElement("li", $187, `${$610}`, "San Diego Underground Film Festival//San Diego, CA 2020"));
     ;
-    $311 || ($258 = createElement("li", $187, `${$610}`, "Ottawa International Animation Festival//Ottawa, Canada 2020"));
+    $314 || ($258 = createElement("li", $187, `${$610}`, "Ottawa International Animation Festival//Ottawa, Canada 2020"));
     ;
-    $311 || ($265 = createElement("li", $187, `${$610}`, "Lausanne Underground Film Festival//Lausanne, Switzerland 2020"));
+    $314 || ($265 = createElement("li", $187, `${$610}`, "Lausanne Underground Film Festival//Lausanne, Switzerland 2020"));
     ;
-    $311 || ($274 = createElement("li", $187, `${$610}`, "New Chitose Airport International Animation Festival//Hokkaido, Japan 2020"));
+    $314 || ($274 = createElement("li", $187, `${$610}`, "New Chitose Airport International Animation Festival//Hokkaido, Japan 2020"));
     ;
-    $311 || ($284 = createElement("li", $187, `${$610}`, "Kuandu International Animation Festival//Taipei, Taiwan 2020"));
+    $314 || ($284 = createElement("li", $187, `${$610}`, "Kuandu International Animation Festival//Taipei, Taiwan 2020"));
     ;
-    $311 || ($295 = createElement("li", $187, `${$610}`, "Fantoche//Baden, Switzerland 2020"));
+    $314 || ($295 = createElement("li", $187, `${$610}`, "Fantoche//Baden, Switzerland 2020"));
     ;
-    $311 || ($304 = createElement("li", $187, `${$610}`, "Supertoon//Sibenik, Croatia 2020"));
+    $314 || ($304 = createElement("li", $187, `${$610}`, "Supertoon//Sibenik, Croatia 2020"));
     ;
-    $311 || ($314 = createElement("li", $187, `${$610}`, "Fluxus Animation Film Festival//Zaandam, Netherlands 2020"));
+    $314 || ($315 = createElement("li", $187, `${$610}`, "Fluxus Animation Film Festival//Zaandam, Netherlands 2020"));
     ;
-    $311 || ($325 = createElement("li", $187, `${$610}`, "Mammoth Lakes Film Festival//Mammoth Lakes, CA 2020"));
+    $314 || ($325 = createElement("li", $187, `${$610}`, "Mammoth Lakes Film Festival//Mammoth Lakes, CA 2020"));
     ;
-    $311 || ($332 = createElement("li", $187, `${$610}`, "Maryland Film Festival//Baltimore, MD 2020"));
+    $314 || ($332 = createElement("li", $187, `${$610}`, "Maryland Film Festival//Baltimore, MD 2020"));
     ;
-    $311 || ($343 = createElement("li", $187, `${$610}`, "Animafest Zagreb//Zagreb, Croatia 2020"));
+    $314 || ($343 = createElement("li", $187, `${$610}`, "Animafest Zagreb//Zagreb, Croatia 2020"));
     ;
-    $311 || ($353 = createElement("li", $187, `${$610}`, "Anifilm//Liberec, Czech Republic 2020"));
+    $314 || ($353 = createElement("li", $187, `${$610}`, "Anifilm//Liberec, Czech Republic 2020"));
     ;
-    $311 || ($363 = createElement("li", $187, `${$610}`, "GLAS//Berkeley, CA 2020"));
+    $314 || ($363 = createElement("li", $187, `${$610}`, "GLAS//Berkeley, CA 2020"));
     ;
-    $311 || ($372 = createElement("li", $187, `${$610}`, "Animac//Lleida, Spain 2020"));
+    $314 || ($372 = createElement("li", $187, `${$610}`, "Animac//Lleida, Spain 2020"));
     ;
-    $311 || ($382 = createElement("li", $187, `${$610}`, "Ann Arbor Film Festival//Ann Arbor, MI 2020"));
+    $314 || ($382 = createElement("li", $187, `${$610}`, "Ann Arbor Film Festival//Ann Arbor, MI 2020"));
     ;
-    $311 || ($393 = createElement("li", $187, `${$610}`, "Toronto Animation Arts Festival International// Toronto, Canada 2020"));
+    $314 || ($393 = createElement("li", $187, `${$610}`, "Toronto Animation Arts Festival International// Toronto, Canada 2020"));
     ;
-    $311 || ($40 = createElement("li", $187, `${$610}`, "Silk Road International Film Festival//Dublin. Ireland 2020"));
+    $314 || ($40 = createElement("li", $187, `${$610}`, "Silk Road International Film Festival//Dublin. Ireland 2020"));
     ;
-    $311 || ($412 = createElement("li", $187, `${$610}`, "Los Angeles Animation Festival//Los Angeles, CA 2019"));
+    $314 || ($412 = createElement("li", $187, `${$610}`, "Los Angeles Animation Festival//Los Angeles, CA 2019"));
     ;
-    $311 || ($423 = createElement("li", $187, `${$610}`, "Animateka//Ljubljana, Slovenia 2019"));
+    $314 || ($423 = createElement("li", $187, `${$610}`, "Animateka//Ljubljana, Slovenia 2019"));
     ;
-    $311 || ($433 = createElement("li", $187, `${$610}`, "Animation Marathon//Athens, Greece 2019"));
+    $314 || ($433 = createElement("li", $187, `${$610}`, "Animation Marathon//Athens, Greece 2019"));
     ;
-    $311 || ($444 = createElement("li", $187, `${$610}`, "Primanima//Buda\xF6rs, Hungary 2019"));
+    $314 || ($444 = createElement("li", $187, `${$610}`, "Primanima//Buda\xF6rs, Hungary 2019"));
     ;
-    $311 || ($453 = createElement("li", $187, `${$610}`, "P\xD6FF Shorts//Talinn, Estonia 2019"));
+    $314 || ($453 = createElement("li", $187, `${$610}`, "P\xD6FF Shorts//Talinn, Estonia 2019"));
     ;
-    $311 || ($464 = createElement("li", $187, `${$610}`, "Animation Chico//Chico, CA 2019"));
+    $314 || ($464 = createElement("li", $187, `${$610}`, "Animation Chico//Chico, CA 2019"));
     ;
-    $311 || ($472 = createElement("li", $187, `${$610}`, "YOUKI International Youth Media Festival//Wels, Austria 2019"));
+    $314 || ($472 = createElement("li", $187, `${$610}`, "YOUKI International Youth Media Festival//Wels, Austria 2019"));
     ;
-    $311 || ($482 = createElement("li", $187, `${$610}`, "NewFilmmakers NY//New York, NY 2019"));
+    $314 || ($482 = createElement("li", $187, `${$610}`, "NewFilmmakers NY//New York, NY 2019"));
     ;
-    $311 || ($492 = createElement("li", $187, `${$610}`, "Indie Short Fest//Los Angeles, CA 2019"));
+    $314 || ($492 = createElement("li", $187, `${$610}`, "Indie Short Fest//Los Angeles, CA 2019"));
     ;
     ;
     $120[$50]($411);
@@ -2681,73 +2887,73 @@ var bryan_default2 = asset({
 });
 
 // app/components/about.imba
-var $217 = Symbol.for("#beforeReconcile");
+var $218 = Symbol.for("#beforeReconcile");
 var $135 = Symbol.for("#placeChild");
 var $323 = Symbol.for("#afterReconcile");
 var $58 = Symbol();
 var $125 = Symbol();
 var $165 = Symbol();
-var $218 = Symbol();
+var $219 = Symbol();
 var $244 = Symbol();
 var $273 = Symbol();
 var $302 = Symbol();
 var AboutComponent = class extends Component {
   render() {
-    var $120, $311, $411, $610 = this._ns_ || "", $710, $97, $106, $1110, $147, $1510, $175, $187, $197, $205, $228, $236, $258, $265, $284, $295, $314;
+    var $120, $314, $411, $610 = this._ns_ || "", $711, $97, $106, $1111, $147, $1510, $175, $187, $197, $205, $229, $236, $258, $265, $284, $295, $315;
     $120 = this;
-    $120[$217]();
-    ($311 = $411 = 1, $120[$58] === 1) || ($311 = $411 = 0, $120[$58] = 1);
-    (!$311 || $411 & 2) && $120.flagSelf$("left about");
-    $311 || ($710 = createElement("img", $120, `cw-ag ${$610}`, null));
-    $311 || ($710.src = bryan_default2);
+    $120[$218]();
+    ($314 = $411 = 1, $120[$58] === 1) || ($314 = $411 = 0, $120[$58] = 1);
+    (!$314 || $411 & 2) && $120.flagSelf$("left about");
+    $314 || ($711 = createElement("img", $120, `cv-ag ${$610}`, null));
+    $314 || ($711.src = bryan_default2);
     ;
-    $311 || ($97 = createElement("p", $120, `${$610}`, "Christian. Storyteller. Bryan Lee enjoys exploring the many flavors of animation and film, often delving into the surreal and absurd with sprinkles of humor. He received a BA in animation from USC in 2019. He has worked with Bento Box Entertainment, Laundry TV and directed music videos for the musician Low Hum. Currently residing in Los Angeles, he is pursuing freelance animation with the hopes of directing more projects!"));
+    $314 || ($97 = createElement("p", $120, `${$610}`, "Christian. Storyteller. Bryan Lee enjoys exploring the many flavors of animation and film, often delving into the surreal and absurd with sprinkles of humor. He received a BA in animation from USC in 2019. He has worked with Bento Box Entertainment, Laundry TV and directed music videos for the musician Low Hum. Currently residing in Los Angeles, he is pursuing freelance animation with the hopes of directing more projects!"));
     ;
-    $311 || ($106 = createElement("ul", $120, `${$610}`, null));
-    ($1110 = $120[$125]) || ($120[$125] = $1110 = createElement("li", $106, `${$610}`, null));
-    $311 || $1110[$135]("Contact: ");
-    $311 || ($147 = createElement("a", $1110, `link ${$610}`, "15bryan.lee@gmail.com"));
-    $311 || ($147.href = "mailto:15bryan.lee@gmail.com");
-    $311 || ($147.target = "_top");
+    $314 || ($106 = createElement("ul", $120, `${$610}`, null));
+    ($1111 = $120[$125]) || ($120[$125] = $1111 = createElement("li", $106, `${$610}`, null));
+    $314 || $1111[$135]("Contact: ");
+    $314 || ($147 = createElement("a", $1111, `link ${$610}`, "15bryan.lee@gmail.com"));
+    $314 || ($147.href = "mailto:15bryan.lee@gmail.com");
+    $314 || ($147.target = "_top");
     ;
     ;
     ($1510 = $120[$165]) || ($120[$165] = $1510 = createElement("li", $106, `${$610}`, null));
-    $311 || $1510[$135]("Instagram: ");
-    $311 || ($175 = createElement("a", $1510, `link ${$610}`, "@tagawee"));
-    $311 || ($175.href = "https://www.instagram.com/tagawee");
-    $311 || ($175.target = "_blank");
+    $314 || $1510[$135]("Instagram: ");
+    $314 || ($175 = createElement("a", $1510, `link ${$610}`, "@tagawee"));
+    $314 || ($175.href = "https://www.instagram.com/tagawee");
+    $314 || ($175.target = "_blank");
     ;
     ;
     ;
-    $311 || ($187 = createElement("p", $120, `cw-an ${$610}`, null));
-    $311 || ($197 = createElement("li", $187, `${$610}`, "Press:"));
+    $314 || ($187 = createElement("p", $120, `cv-an ${$610}`, null));
+    $314 || ($197 = createElement("li", $187, `${$610}`, "Press:"));
     ;
-    ($205 = $120[$218]) || ($120[$218] = $205 = createElement("li", $187, `${$610}`, null));
-    $311 || $205[$135]("It's Nice That: ");
-    $311 || ($228 = createElement("a", $205, `link ${$610}`, "\u201CThe delicious, the silly and the strange...\u201D"));
-    $311 || ($228.href = "https://www.itsnicethat.com/articles/bryan-lee-illustration-080222");
-    $311 || ($228.target = "_blank");
+    ($205 = $120[$219]) || ($120[$219] = $205 = createElement("li", $187, `${$610}`, null));
+    $314 || $205[$135]("It's Nice That: ");
+    $314 || ($229 = createElement("a", $205, `link ${$610}`, "\u201CThe delicious, the silly and the strange...\u201D"));
+    $314 || ($229.href = "https://www.itsnicethat.com/articles/bryan-lee-illustration-080222");
+    $314 || ($229.target = "_blank");
     ;
     ;
     ($236 = $120[$244]) || ($120[$244] = $236 = createElement("li", $187, `${$610}`, null));
-    $311 || $236[$135]("Quickdraw Animation Society: ");
-    $311 || ($258 = createElement("a", $236, `link ${$610}`, "Monday Shorts: Cage Match"));
-    $311 || ($258.href = "https://quickdrawanimation.ca/discover/monday-shorts/cage-match");
-    $311 || ($258.target = "_blank");
+    $314 || $236[$135]("Quickdraw Animation Society: ");
+    $314 || ($258 = createElement("a", $236, `link ${$610}`, "Monday Shorts: Cage Match"));
+    $314 || ($258.href = "https://quickdrawanimation.ca/discover/monday-shorts/cage-match");
+    $314 || ($258.target = "_blank");
     ;
     ;
     ($265 = $120[$273]) || ($120[$273] = $265 = createElement("li", $187, `${$610}`, null));
-    $311 || $265[$135]("Cartoon Brew: ");
-    $311 || ($284 = createElement("a", $265, `link ${$610}`, "Short Pick of the Day: 'Cage Match' by Bryan Lee"));
-    $311 || ($284.href = "https://www.cartoonbrew.com/cartoon-brew-pick/short-pick-of-the-day-cage-match-by-bryan-lee-196484.html");
-    $311 || ($284.target = "_blank");
+    $314 || $265[$135]("Cartoon Brew: ");
+    $314 || ($284 = createElement("a", $265, `link ${$610}`, "Short Pick of the Day: 'Cage Match' by Bryan Lee"));
+    $314 || ($284.href = "https://www.cartoonbrew.com/cartoon-brew-pick/short-pick-of-the-day-cage-match-by-bryan-lee-196484.html");
+    $314 || ($284.target = "_blank");
     ;
     ;
     ($295 = $120[$302]) || ($120[$302] = $295 = createElement("li", $187, `${$610}`, null));
-    $311 || $295[$135]("Voyage LA: ");
-    $311 || ($314 = createElement("a", $295, `link ${$610}`, "Check out Bryan Lee's Artwork"));
-    $311 || ($314.href = "http://voyagela.com/interview/check-bryan-lees-artwork/");
-    $311 || ($314.target = "_blank");
+    $314 || $295[$135]("Voyage LA: ");
+    $314 || ($315 = createElement("a", $295, `link ${$610}`, "Check out Bryan Lee's Artwork"));
+    $314 || ($315.href = "http://voyagela.com/interview/check-bryan-lees-artwork/");
+    $314 || ($315.target = "_blank");
     ;
     ;
     ;
@@ -2786,7 +2992,7 @@ var ls2_default2 = asset({
 });
 
 // app/components/projects.imba
-var $219 = Symbol.for("#beforeReconcile");
+var $220 = Symbol.for("#beforeReconcile");
 var $194 = Symbol.for("#getSlot");
 var $225 = Symbol.for("#afterVisit");
 var $235 = Symbol.for("#appendChild");
@@ -2797,32 +3003,32 @@ var $255 = Symbol();
 use_slots();
 var ProjectsComponent = class extends Component {
   render() {
-    var $120, $311, $411, $610 = this._ns_ || "", $710, $89, $97, $106, $1110, $129, $137, $147, $169, $175, $187, $205, $246, $265, $274, $284, $295;
+    var $120, $314, $411, $610 = this._ns_ || "", $711, $89, $97, $106, $1111, $129, $137, $147, $169, $175, $187, $205, $246, $265, $274, $284, $295;
     $120 = this;
-    $120[$219]();
-    ($311 = $411 = 1, $120[$59] === 1) || ($311 = $411 = 0, $120[$59] = 1);
-    (!$311 || $411 & 2) && $120.flagSelf$("left projects");
-    $311 || ($710 = createElement("h3", $120, `${$610}`, "STRANGE LOVE MUSIC VIDEO FOR LOW HUM"));
+    $120[$220]();
+    ($314 = $411 = 1, $120[$59] === 1) || ($314 = $411 = 0, $120[$59] = 1);
+    (!$314 || $411 & 2) && $120.flagSelf$("left projects");
+    $314 || ($711 = createElement("h3", $120, `${$610}`, "STRANGE LOVE MUSIC VIDEO FOR LOW HUM"));
     ;
-    $311 || ($89 = createElement("div", $120, `iframe-container ${$610}`, null));
-    $311 || ($97 = createElement("iframe", $89, `${$610}`, null));
-    $311 || ($97.width = "560");
-    $311 || ($97.height = "315");
-    $311 || ($97.src = "https://www.youtube.com/embed/1GXzFdhYds4");
-    $311 || ($97.allow = "fullscreen");
-    ;
-    ;
-    $311 || ($106 = createElement("h3", $120, `${$610}`, "IDKMLYD MUSIC VIDEO FOR LOW HUM"));
-    ;
-    $311 || ($1110 = createElement("div", $120, `iframe-container ${$610}`, null));
-    $311 || ($129 = createElement("iframe", $1110, `${$610}`, null));
-    $311 || ($129.width = "560");
-    $311 || ($129.height = "315");
-    $311 || ($129.src = "https://www.youtube.com/embed/V0lB-kIooOg");
-    $311 || ($129.allow = "fullscreen");
+    $314 || ($89 = createElement("div", $120, `iframe-container ${$610}`, null));
+    $314 || ($97 = createElement("iframe", $89, `${$610}`, null));
+    $314 || ($97.width = "560");
+    $314 || ($97.height = "315");
+    $314 || ($97.src = "https://www.youtube.com/embed/1GXzFdhYds4");
+    $314 || ($97.allow = "fullscreen");
     ;
     ;
-    $311 || ($137 = createElement("h3", $120, `${$610}`, "LOVE SAMURAI (PERSONAL PROJECT)"));
+    $314 || ($106 = createElement("h3", $120, `${$610}`, "IDKMLYD MUSIC VIDEO FOR LOW HUM"));
+    ;
+    $314 || ($1111 = createElement("div", $120, `iframe-container ${$610}`, null));
+    $314 || ($129 = createElement("iframe", $1111, `${$610}`, null));
+    $314 || ($129.width = "560");
+    $314 || ($129.height = "315");
+    $314 || ($129.src = "https://www.youtube.com/embed/V0lB-kIooOg");
+    $314 || ($129.allow = "fullscreen");
+    ;
+    ;
+    $314 || ($137 = createElement("h3", $120, `${$610}`, "LOVE SAMURAI (PERSONAL PROJECT)"));
     ;
     ($169 = $175 = 1, $147 = $120[$156]) || ($169 = $175 = 0, $120[$156] = $147 = createComponent("magnify", $120, `${$610}`, null));
     $187 = $147[$194]("__", $120);
@@ -2933,7 +3139,7 @@ var __default12 = asset({
 });
 
 // app/components/illustrations.imba
-var $220 = Symbol.for("#beforeReconcile");
+var $221 = Symbol.for("#beforeReconcile");
 var $126 = Symbol.for("#getSlot");
 var $157 = Symbol.for("#afterVisit");
 var $166 = Symbol.for("#appendChild");
@@ -2948,24 +3154,24 @@ var $462 = Symbol();
 use_slots();
 var IllustrationsComponent = class extends Component {
   render() {
-    var $120, $311, $411, $610 = this._ns_ || "", $710, $97, $106, $1110, $137, $175, $197, $205, $2112, $228, $246, $265, $274, $284, $295, $314, $332, $343, $353, $363, $382, $40, $412, $423, $433, $453, $472, $482, $492, $503;
+    var $120, $314, $411, $610 = this._ns_ || "", $711, $97, $106, $1111, $137, $175, $197, $205, $2112, $229, $246, $265, $274, $284, $295, $315, $332, $343, $353, $363, $382, $40, $412, $423, $433, $453, $472, $482, $492, $503;
     $120 = this;
-    $120[$220]();
-    ($311 = $411 = 1, $120[$510] === 1) || ($311 = $411 = 0, $120[$510] = 1);
-    (!$311 || $411 & 2) && $120.flagSelf$("left");
-    ($97 = $106 = 1, $710 = $120[$86]) || ($97 = $106 = 0, $120[$86] = $710 = createComponent("magnify", $120, `${$610}`, null));
-    $1110 = $710[$126]("__", $120);
-    $97 || ($137 = createElement("img", $1110, `${$610}`, null));
+    $120[$221]();
+    ($314 = $411 = 1, $120[$510] === 1) || ($314 = $411 = 0, $120[$510] = 1);
+    (!$314 || $411 & 2) && $120.flagSelf$("left");
+    ($97 = $106 = 1, $711 = $120[$86]) || ($97 = $106 = 0, $120[$86] = $711 = createComponent("magnify", $120, `${$610}`, null));
+    $1111 = $711[$126]("__", $120);
+    $97 || ($137 = createElement("img", $1111, `${$610}`, null));
     $97 || ($137.src = __default2);
     ;
-    $97 || !$710.setup || $710.setup($106);
-    $710[$157]($106);
-    $97 || $120[$166]($710);
+    $97 || !$711.setup || $711.setup($106);
+    $711[$157]($106);
+    $97 || $120[$166]($711);
     ;
     ($197 = $205 = 1, $175 = $120[$184]) || ($197 = $205 = 0, $120[$184] = $175 = createComponent("magnify", $120, `${$610}`, null));
     $2112 = $175[$126]("__", $120);
-    $197 || ($228 = createElement("img", $2112, `${$610}`, null));
-    $197 || ($228.src = __default4);
+    $197 || ($229 = createElement("img", $2112, `${$610}`, null));
+    $197 || ($229.src = __default4);
     ;
     $197 || !$175.setup || $175.setup($205);
     $175[$157]($205);
@@ -2980,14 +3186,14 @@ var IllustrationsComponent = class extends Component {
     $246[$157]($274);
     $265 || $120[$166]($246);
     ;
-    ($332 = $343 = 1, $314 = $120[$324]) || ($332 = $343 = 0, $120[$324] = $314 = createComponent("magnify", $120, `${$610}`, null));
-    $353 = $314[$126]("__", $120);
+    ($332 = $343 = 1, $315 = $120[$324]) || ($332 = $343 = 0, $120[$324] = $315 = createComponent("magnify", $120, `${$610}`, null));
+    $353 = $315[$126]("__", $120);
     $332 || ($363 = createElement("img", $353, `${$610}`, null));
     $332 || ($363.src = __default8);
     ;
-    $332 || !$314.setup || $314.setup($343);
-    $314[$157]($343);
-    $332 || $120[$166]($314);
+    $332 || !$315.setup || $315.setup($343);
+    $315[$157]($343);
+    $332 || $120[$166]($315);
     ;
     ($40 = $412 = 1, $382 = $120[$392]) || ($40 = $412 = 0, $120[$392] = $382 = createComponent("magnify", $120, `${$610}`, null));
     $423 = $382[$126]("__", $120);
@@ -3014,18 +3220,18 @@ var IllustrationsComponent = class extends Component {
 defineTag("illustrations", IllustrationsComponent, {});
 
 // app/components/goodbye.imba
-var $221 = Symbol.for("#beforeReconcile");
+var $226 = Symbol.for("#beforeReconcile");
 var $95 = Symbol.for("#afterReconcile");
 var $511 = Symbol();
 var GoodbyeComponent = class extends Component {
   render() {
-    var $120, $311, $411, $610 = this._ns_ || "", $710, $89;
+    var $120, $314, $411, $610 = this._ns_ || "", $711, $89;
     $120 = this;
-    $120[$221]();
-    ($311 = $411 = 1, $120[$511] === 1) || ($311 = $411 = 0, $120[$511] = 1);
-    (!$311 || $411 & 2) && $120.flagSelf$("left");
-    $311 || ($710 = createElement("div", $120, `cz-ag ${$610}`, null));
-    $311 || ($89 = createElement("p", $710, `${$610}`, "Goodbye!"));
+    $120[$226]();
+    ($314 = $411 = 1, $120[$511] === 1) || ($314 = $411 = 0, $120[$511] = 1);
+    (!$314 || $411 & 2) && $120.flagSelf$("left");
+    $314 || ($711 = createElement("div", $120, `cu-ag ${$610}`, null));
+    $314 || ($89 = createElement("p", $711, `${$610}`, "Goodbye!"));
     ;
     ;
     $120[$95]($411);
@@ -3034,30 +3240,30 @@ var GoodbyeComponent = class extends Component {
 };
 defineTag("goodbye", GoodbyeComponent, {});
 
-// app/components/magnify.imba
-var $226 = Symbol.for("#beforeReconcile");
+// node_modules/imba-magnify/magnify.js
+var $227 = Symbol.for("#beforeReconcile");
 var $158 = Symbol.for("##up");
 var $195 = Symbol.for("#placeChild");
 var $204 = Symbol.for("#appendChild");
 var $2110 = Symbol.for("#afterReconcile");
 var $512 = Symbol();
 var $87 = Symbol();
-var $117 = Symbol();
+var $118 = Symbol();
 var $127 = Symbol();
 var $167 = Symbol();
 var $185 = Symbol();
-use_events(), use_events_mouse();
+use_events();
 var MagnifyComponent = class extends Component {
   get $container() {
-    let el = createElement("div", null, `cu_af ${this._ns_ || ""} ref--container`, null);
+    let el = createElement("div", null, `jcava3_af ${this._ns_ || ""} ref--container`, null);
     return Object.defineProperty(this, "$container", {value: el}), el;
   }
   get zoomed_in\u03A6() {
     return this.$container.style.transform !== "";
   }
-  setup() {
-    window.addEventListener("resize", this.zoom_out.bind(this));
-    return window.addEventListener("scroll", this.zoom_out.bind(this));
+  mount() {
+    globalThis.window.addEventListener("resize", this.zoom_out.bind(this));
+    return globalThis.window.addEventListener("scroll", this.zoom_out.bind(this));
   }
   zoom_out() {
     this.$container.style.transform = "";
@@ -3066,10 +3272,10 @@ var MagnifyComponent = class extends Component {
   }
   zoom_in() {
     let {x, y, width, height} = this.$container.getBoundingClientRect();
-    let scale_by_height = window.innerWidth / window.innerHeight > width / height;
-    let ds = scale_by_height ? window.innerHeight / height : window.innerWidth / width;
-    let dx = window.innerWidth / 2 - width / 2 - x;
-    let dy = window.innerHeight / 2 - height / 2 - y;
+    let scale_by_height = globalThis.window.innerWidth / globalThis.window.innerHeight > width / height;
+    let ds = scale_by_height ? globalThis.window.innerHeight / height : globalThis.window.innerWidth / width;
+    let dx = globalThis.window.innerWidth / 2 - width / 2 - x;
+    let dy = globalThis.window.innerHeight / 2 - height / 2 - y;
     this.$container.style.transform = "translate(" + dx + "px, " + dy + "px) scale(" + ds + ")";
     return this.style.cursor = "zoom-out";
   }
@@ -3082,40 +3288,57 @@ var MagnifyComponent = class extends Component {
     ;
   }
   render() {
-    var self = this, $120, $311, $411, $610 = this._ns_ || "", $710, $97, $106, $137, $147, $175;
+    var self = this, $120, $314, $411, $610 = this._ns_ || "", $711, $97, $106, $137, $147, $175;
     $120 = this;
-    $120[$226]();
-    ($311 = $411 = 1, $120[$512] === 1) || ($311 = $411 = 0, $120[$512] = 1);
-    $311 || $120.on$(`click`, {$_: [function(e, $$) {
+    $120[$227]();
+    ($314 = $411 = 1, $120[$512] === 1) || ($314 = $411 = 0, $120[$512] = 1);
+    $314 || $120.on$(`click`, {$_: [function(e, $$) {
       return self.handle_click(e);
     }]}, this);
-    (!$311 || $411 & 2) && $120.flagSelf$("cu-af");
-    ($97 = $106 = 1, $710 = $120[$87]) || ($97 = $106 = 0, $120[$87] = $710 = createElement("div", $120, `bg cu_af ${$610}`, null));
+    (!$314 || $411 & 2) && $120.flagSelf$("jcava3-af");
+    ($97 = $106 = 1, $711 = $120[$87]) || ($97 = $106 = 0, $120[$87] = $711 = createElement("div", $120, `bg jcava3_af ${$610}`, null));
     $137 = self.zoomed_in\u03A6 || void 0, $137 === $120[$127] || ($106 |= 2, $120[$127] = $137);
-    $106 & 2 && $710.flag$(`bg cu_af ${$610} ` + ($120[$127] ? `active` : ""));
+    $106 & 2 && $711.flag$(`bg jcava3_af ${$610} ` + ($120[$127] ? `active` : ""));
     ;
     ($147 = $120[$167]) || ($120[$167] = ($147 = this.$container, $147[$158] = $120, $147));
     $175 = $120.__slots.__;
     $120[$185] = $147[$195]($175, 384, $120[$185]);
     ;
-    $311 || $120[$204]($147);
+    $314 || $120[$204]($147);
     ;
     $120[$2110]($411);
     return $120;
   }
 };
 defineTag("magnify", MagnifyComponent, {});
+styles.register("jcava3", `
+.jcava3-af:not(#_):not(#_) {cursor: zoom-in;}
+
+.ref--container.jcava3_af:not(#_) {display: inline-block;
+transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1);}
+
+.bg.jcava3_af:not(#_) {transition: background 700ms;}
+
+.active.jcava3_af:not(#_) {background: hsla(213.12,93.90%,67.84%,50%);
+position: fixed;
+top: 0rem;
+left: 0rem;
+bottom: 0rem;
+right: 0rem;}
+
+magnify-tag { display:block; }
+`);
 
 // app/client.imba
-var $118;
-var $227 = getRenderContext();
-var $310 = Symbol();
+var $119;
+var $228 = getRenderContext();
+var $311 = Symbol();
 var $410;
 var $513;
 var $88;
 var $96 = Symbol();
 var $105;
-var $119;
+var $1110;
 var $128;
 var $136 = Symbol();
 var $146;
@@ -3146,21 +3369,21 @@ var $78;
 var $79 = Symbol();
 var $80;
 var $81;
-var $67 = Symbol.for("##up");
-var $76 = Symbol.for("#afterVisit");
+var $69 = Symbol.for("##up");
+var $710 = Symbol.for("#afterVisit");
 var $2111 = Symbol.for("#beforeReconcile");
 var $303 = Symbol.for("#placeChild");
 var $313 = Symbol.for("#afterReconcile");
 var $443 = Symbol.for("#appendChild");
-var $69 = Symbol.for("#getRenderContext");
+var $692 = Symbol.for("#getRenderContext");
 var $732 = Symbol.for("#isRichElement");
 use_events(), use_events_mouse();
 var view = "YOU ARE HERE";
 var views = {
-  ABOUT: (($410 = $513 = 1, $118 = $227[$310]) || ($410 = $513 = 0, $118 = $227[$310] = $118 = createComponent("about", null, null, null)), $410 || ($118[$67] = $227._), $410 || $227.sym || !$118.setup || $118.setup($513), $227.sym || $118[$76]($513), $118),
-  PROJECTS: (($105 = $119 = 1, $88 = $227[$96]) || ($105 = $119 = 0, $88 = $227[$96] = $88 = createComponent("projects", null, null, null)), $105 || ($88[$67] = $227._), $105 || $227.sym || !$88.setup || $88.setup($119), $227.sym || $88[$76]($119), $88),
-  ILLUSTRATIONS: (($146 = $159 = 1, $128 = $227[$136]) || ($146 = $159 = 0, $128 = $227[$136] = $128 = createComponent("illustrations", null, null, null)), $146 || ($128[$67] = $227._), $146 || $227.sym || !$128.setup || $128.setup($159), $227.sym || $128[$76]($159), $128),
-  "GOODBYE!": (($186 = $196 = 1, $168 = $227[$174]) || ($186 = $196 = 0, $168 = $227[$174] = $168 = createComponent("goodbye", null, null, null)), $186 || ($168[$67] = $227._), $186 || $227.sym || !$168.setup || $168.setup($196), $227.sym || $168[$76]($196), $168)
+  ABOUT: (($410 = $513 = 1, $119 = $228[$311]) || ($410 = $513 = 0, $119 = $228[$311] = $119 = createComponent("about", null, null, null)), $410 || ($119[$69] = $228._), $410 || $228.sym || !$119.setup || $119.setup($513), $228.sym || $119[$710]($513), $119),
+  PROJECTS: (($105 = $1110 = 1, $88 = $228[$96]) || ($105 = $1110 = 0, $88 = $228[$96] = $88 = createComponent("projects", null, null, null)), $105 || ($88[$69] = $228._), $105 || $228.sym || !$88.setup || $88.setup($1110), $228.sym || $88[$710]($1110), $88),
+  ILLUSTRATIONS: (($146 = $159 = 1, $128 = $228[$136]) || ($146 = $159 = 0, $128 = $228[$136] = $128 = createComponent("illustrations", null, null, null)), $146 || ($128[$69] = $228._), $146 || $228.sym || !$128.setup || $128.setup($159), $228.sym || $128[$710]($159), $128),
+  "GOODBYE!": (($186 = $196 = 1, $168 = $228[$174]) || ($186 = $196 = 0, $168 = $228[$174] = $168 = createComponent("goodbye", null, null, null)), $186 || ($168[$69] = $228._), $186 || $228.sym || !$168.setup || $168.setup($196), $228.sym || $168[$710]($196), $168)
 };
 var quotes = {
   "YOU ARE HERE": "\u201CHello.\u201D -Bryan Lee",
@@ -3171,16 +3394,16 @@ var quotes = {
 };
 var Tab = class extends Component {
   render() {
-    var self = this, $205, $228, $236, $274;
+    var self = this, $205, $229, $236, $274;
     $205 = this;
     $205[$2111]();
-    ($228 = $236 = 1, $205[$245] === 1) || ($228 = $236 = 0, $205[$245] = 1);
-    $228 || $205.on$(`click`, {$_: [function(e, $$) {
+    ($229 = $236 = 1, $205[$245] === 1) || ($229 = $236 = 0, $205[$245] = 1);
+    $229 || $205.on$(`click`, {$_: [function(e, $$) {
       return view = self.name;
     }]}, this);
     $274 = view == self.name || void 0, $274 === $205[$264] || ($236 |= 2, $205[$264] = $274);
-    (!$228 || $236 & 2) && $205.flagSelf$("ci-aj red-hover " + ($205[$264] ? `active` : ""));
-    $274 = self.name, $274 === $205[$294] && $228 || ($205[$283] = $205[$303]($205[$294] = $274, 384, $205[$283]));
+    (!$229 || $236 & 2) && $205.flagSelf$("ci-aj red-hover " + ($205[$264] ? `active` : ""));
+    $274 = self.name, $274 === $205[$294] && $229 || ($205[$283] = $205[$303]($205[$294] = $274, 384, $205[$283]));
     $205[$313]($236);
     return $205;
   }
@@ -3203,31 +3426,31 @@ var AppComponent = class extends Component {
     ($423 = $433 = 1, $40 = $325[$41]) || ($423 = $433 = 0, $325[$41] = $40 = createComponent(Tab, $393, `${$363}`, null));
     $423 || ($40.name = "YOU ARE HERE");
     $423 || !$40.setup || $40.setup($433);
-    $40[$76]($433);
+    $40[$710]($433);
     $423 || $393[$443]($40);
     ;
     ($472 = $482 = 1, $453 = $325[$463]) || ($472 = $482 = 0, $325[$463] = $453 = createComponent(Tab, $393, `${$363}`, null));
     $472 || ($453.name = "ABOUT");
     $472 || !$453.setup || $453.setup($482);
-    $453[$76]($482);
+    $453[$710]($482);
     $472 || $393[$443]($453);
     ;
     ($51 = $523 = 1, $492 = $325[$502]) || ($51 = $523 = 0, $325[$502] = $492 = createComponent(Tab, $393, `${$363}`, null));
     $51 || ($492.name = "PROJECTS");
     $51 || !$492.setup || $492.setup($523);
-    $492[$76]($523);
+    $492[$710]($523);
     $51 || $393[$443]($492);
     ;
     ($552 = $562 = 1, $532 = $325[$542]) || ($552 = $562 = 0, $325[$542] = $532 = createComponent(Tab, $393, `${$363}`, null));
     $552 || ($532.name = "ILLUSTRATIONS");
     $552 || !$532.setup || $532.setup($562);
-    $532[$76]($562);
+    $532[$710]($562);
     $552 || $393[$443]($532);
     ;
     ($592 = $60 = 1, $572 = $325[$582]) || ($592 = $60 = 0, $325[$582] = $572 = createComponent(Tab, $393, `${$363}`, null));
     $592 || ($572.name = "GOODBYE!");
     $592 || !$572.setup || $572.setup($60);
-    $572[$76]($60);
+    $572[$710]($60);
     $592 || $393[$443]($572);
     ;
     ;
@@ -3237,20 +3460,20 @@ var AppComponent = class extends Component {
     ;
     $662 = null;
     if (views.hasOwnProperty(view)) {
-      $672 = $325[$69]($70);
+      $672 = $325[$692]($70);
       ($71 = $722 = 1, $662 = $672.run(views[view])) || ($71 = $722 = 0, $672.cache($662 = createDynamic($672.value, null, `${$363}`, null)));
-      $71 || ($662[$67] = $325);
+      $71 || ($662[$69] = $325);
       if ($662[$732]) {
         (!$71 || $722 & 2) && $662.flags.reconcile($68, `${$363}`);
         $71 || !$662.setup || $662.setup($722);
-        $662[$76]($722);
+        $662[$710]($722);
       }
       ;
     } else {
       ($752 = $762 = 1, $662 = $325[$742]) || ($752 = $762 = 0, $325[$742] = $662 = createComponent("home", null, `${$363}`, null));
-      $752 || ($662[$67] = $325);
+      $752 || ($662[$69] = $325);
       $752 || !$662.setup || $662.setup($762);
-      $662[$76]($762);
+      $662[$710]($762);
     }
     ;
     $325[$77] = $325[$303]($662, 0, $325[$77]);
@@ -3259,5 +3482,5 @@ var AppComponent = class extends Component {
   }
 };
 defineTag("app", AppComponent, {});
-mount((($80 = $81 = 1, $78 = $227[$79]) || ($80 = $81 = 0, $78 = $227[$79] = $78 = createComponent("app", null, null, null)), $80 || ($78[$67] = $227._), $80 || $227.sym || !$78.setup || $78.setup($81), $227.sym || $78[$76]($81), $78));
+mount((($80 = $81 = 1, $78 = $228[$79]) || ($80 = $81 = 0, $78 = $228[$79] = $78 = createComponent("app", null, null, null)), $80 || ($78[$69] = $228._), $80 || $228.sym || !$78.setup || $78.setup($81), $228.sym || $78[$710]($81), $78));
 //__FOOT__
