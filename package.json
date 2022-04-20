@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "imba": "^2.0.0-alpha.207"
+    "imba": "^2.0.0-alpha.207",
+    "imba-magnify": "^1.0.0"
   }
 }

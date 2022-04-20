@@ -3,9 +3,10 @@ import './components/about'
 import './components/projects'
 import './components/illustrations'
 import './components/goodbye'
-import './components/magnify'
 
 import './components/styles'
+
+import 'imba-magnify'
 
 let view = "YOU ARE HERE"
 
