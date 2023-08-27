@@ -1,13 +1,11 @@
 {
   "name": "bryanlee.love",
   "scripts": {
-    "start": "imba run --baseurl . -w server.imba",
-    "build": "npx imba build --baseurl . -SMH server.imba",
+    "dev": "imba -w index.html",
+    "build": "imba build index.html",
     "deploy": "npm run build && npx touch dist/public/.nojekyll && echo bryanlee.love > dist/public/CNAME && npx gh-pages --dotfiles --dist dist/public"
   },
-  "dependencies": {
-    "express": "^4.17.1",
-    "imba": "^2.0.0-alpha.207",
-    "imba-magnify": "^1.0.0"
+  "devDependencies": {
+    "imba": "^2.0.0-alpha.231"
   }
 }

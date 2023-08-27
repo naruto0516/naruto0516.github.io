@@ -1,4 +1,4 @@
-tag projects
+tag app-projects
 	<self.left.projects>
 			<h3> "STRANGE LOVE MUSIC VIDEO FOR LOW HUM"
 			<.iframe-container>

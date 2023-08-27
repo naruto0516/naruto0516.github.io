@@ -1,4 +1,4 @@
-tag goodbye
+tag app-goodbye
 	<self.left>
 		<div [ta:left w:100%]>
 			<p> "Goodbye!"

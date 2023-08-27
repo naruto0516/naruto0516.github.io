@@ -1,4 +1,5 @@
-tag home
+tag app-home
+
 	<self.left.home>
 		<.iframe-container>
 			<iframe

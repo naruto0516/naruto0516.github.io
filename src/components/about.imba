@@ -1,4 +1,4 @@
-tag about
+tag app-about
 	<self.left.about>
 		<img [max-width:300px] src='../img/bryan.png'>
 		<p> "Christian. Storyteller. Bryan Lee enjoys exploring the many flavors of animation and film, often delving into the surreal and absurd with sprinkles of humor. He received a BA in animation from USC in 2019. He has worked with Bento Box Entertainment, Laundry TV and directed music videos for the musician Low Hum. Currently residing in Los Angeles, he is pursuing freelance animation with the hopes of directing more projects!"

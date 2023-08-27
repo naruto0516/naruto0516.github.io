@@ -1,4 +1,4 @@
-tag illustrations
+tag app-illustrations
 	<self.left>
 		<magnify> <img src="../img/1.png">
 		<magnify> <img src="../img/2.png">
