@@ -1,18 +1,17 @@
-import './components/home'
-import './components/about'
-import './components/projects'
-import './components/illustrations'
-import './components/goodbye'
-import './components/magnify'
-import './components/styles'
+import './components/home.imba'
+import './components/about.imba'
+import './components/projects.imba'
+import './components/illustrations.imba'
+import './components/goodbye.imba'
+import './components/magnify.imba'
+import './components/styles.imba'
 
-let quotes = {
+let quotes =
 	"/": '“Hello.” -Bryan Lee'
 	"/ABOUT": '“Good vibrations…” -Pegasus'
 	"/PROJECTS": "“Go big or go home.” -Abraham Lincoln"
 	"/ILLUSTRATIONS": "“Variety is the spice of life.” -Paulette Chandler"
 	"/GOODBYE!": "“Goodbye!” -Steve Martin"
-}
 
 tag app
 

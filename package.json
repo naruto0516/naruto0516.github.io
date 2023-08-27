@@ -1,11 +1,14 @@
 {
   "name": "bryanlee.love",
+  "type": "module",
   "scripts": {
-    "dev": "imba -w index.html",
-    "build": "imba build index.html",
-    "deploy": "npm run build && npx touch dist/public/.nojekyll && echo bryanlee.love > dist/public/CNAME && npx gh-pages --dotfiles --dist dist/public"
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "npm run build && npx touch dist/.nojekyll && echo bryanlee.love > dist/CNAME && npx gh-pages --dotfiles --dist dist"
   },
   "devDependencies": {
-    "imba": "^2.0.0-alpha.231"
+    "imba": "^2.0.0-alpha.231",
+    "vite": "^4.4.9",
+    "vite-plugin-imba": "^0.10.3"
   }
 }
